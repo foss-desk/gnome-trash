@@ -1,94 +1,101 @@
-const St = imports.gi.St;
-const PopupMenu = imports.ui.popupMenu;
-const GObject = imports.gi.GObject;
+import St from 'gi://St';
+import GObject from 'gi://GObject';
+import Clutter from 'gi://Clutter';
+import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 
-export class ActionBar extends
-  PopupMenu.PopupBaseMenuItem {
+import * as utils from './utils.js';
+import * as Tooltip from './tooltip.js';
 
-  static {
-    GObject.registerClass(this);
-  }
+let _ = (s: string) => s;
 
-  constructor() {
-    super({
-      reactive: false,
-      activate: false,
-      hover: false,
-      can_focus: false,
-      style_class: 'action-bar',
-    })
+export function init(gettextFunc: (s: string) => string) {
+    _ = gettextFunc;
+}
 
-    let actionsBox = new St.BoxLayout({
-      vertical: false,
-      hover: false,
-      can_focus: false,
-    });
+export class ActionBar extends PopupMenu.PopupBaseMenuItem {
+    private _openBtn: any;
+    private _emptyBtn: any;
+    private _settingsBtn: any;
 
-    // Open trash button
-    this._openBtn = new PopupMenu.PopupBaseMenuItem({
-      style_class: 'action-bar-btn'
-    });
+    static {
+        GObject.registerClass(this);
+    }
 
-    let openIcon = new St.Icon({
-      icon_name: "folder-open-symbolic",
-      style_class: 'popup-menu-icon'
-    });
+    constructor() {
+        super({
+            reactive: false,
+            activate: false,
+            hover: false,
+            can_focus: false,
+            style_class: 'action-bar-container',
+        });
 
-    let open_label = new St.Label({ text: _("Open Trash") });
+        const mainBox = new St.BoxLayout({
+            ...utils.boxOrientation(Clutter.Orientation.HORIZONTAL),
+            x_expand: true,
+            style_class: 'action-bar',
+        });
 
-    this._openBtn.add_child(openIcon);
-    this._openBtn.add_child(open_label);
-    this._openBtn._ornamentLabel.visible = false;
-    actionsBox.add(this._openBtn);
+        // Open Trash
+        this._openBtn = this._createButton('folder-open-symbolic', _('Open Trash'));
+        Tooltip.attachTooltip(this._openBtn, () => _('Open Trash'));
+        mainBox.add_child(this._openBtn);
 
-    // Open trash button
-    this._emptyBtn = new PopupMenu.PopupBaseMenuItem({
-      style_class: 'action-bar-btn'
-    });
+        // Spacer
+        const spacer = new St.Widget({ x_expand: true });
+        mainBox.add_child(spacer);
 
-    let emptyIcon = new St.Icon({
-      icon_name: "edit-delete-symbolic",
-      style_class: 'popup-menu-icon',
-    });
+        // Empty Trash
+        this._emptyBtn = this._createButton(
+            'edit-delete-symbolic',
+            _('Empty Trash'),
+            'action-btn-danger',
+        );
+        Tooltip.attachTooltip(this._emptyBtn, () => _('Empty Trash'));
+        mainBox.add_child(this._emptyBtn);
 
-    let emptyLbl = new St.Label({ text: _("Empty Trash") });
+        // Settings
+        this._settingsBtn = this._createIconButton('emblem-system-symbolic');
+        Tooltip.attachTooltip(this._settingsBtn, () => _('Settings'));
+        mainBox.add_child(this._settingsBtn);
 
-    this._emptyBtn.add_child(emptyLbl);
-    this._emptyBtn.add_child(emptyIcon);
-    this._emptyBtn._ornamentLabel.visible = false;
-    actionsBox.add(this._emptyBtn);
+        this.add_child(mainBox);
+    }
 
-    // Add 'Settings' menu item to open settings
-    this._settingsBtn = new PopupMenu.PopupBaseMenuItem({
-      style_class: 'action-bar-btn'
-    });
+    private _createButton(iconName: string, label: string, extraClass: string = '') {
+        const box = new St.BoxLayout({
+            ...utils.boxOrientation(Clutter.Orientation.HORIZONTAL),
+            style_class: 'action-btn-content',
+        });
+        box.add_child(new St.Icon({ icon_name: iconName, icon_size: 16 }));
+        box.add_child(new St.Label({ text: label, y_align: Clutter.ActorAlign.CENTER }));
 
-    this.settingsIcon = new St.Icon({
-      icon_name: "emblem-system-symbolic",
-      style_class: 'popup-menu-icon',
-    });
-    this._settingsBtn.add_child(this.settingsIcon);
-    this._settingsBtn._ornamentLabel.visible = false;
-    actionsBox.add(this._settingsBtn);
+        return new St.Button({
+            style_class: `action-btn ${extraClass}`,
+            child: box,
+            can_focus: true,
+            track_hover: true,
+        });
+    }
 
-    this.actor.add(actionsBox);
-  }
+    private _createIconButton(iconName: string, extraClass: string = '') {
+        return new St.Button({
+            style_class: `action-btn ${extraClass}`,
+            child: new St.Icon({ icon_name: iconName, icon_size: 16 }),
+            can_focus: true,
+            track_hover: true,
+        });
+    }
 
-  onEmptyTrash(callback: () => void) {
-    this._emptyBtn.connect('activate', () => {
-      callback();
-    });
-  }
+    onOpenTrash(callback: () => void) {
+        this._openBtn.connect('clicked', callback);
+    }
 
-  onOpenTrash(callback: () => void) {
-    this._openBtn.connect('activate', () => {
-      callback();
-    });
-  }
+    onEmptyTrash(callback: () => void) {
+        this._emptyBtn.connect('clicked', callback);
+    }
 
-  onOpenSettings(callback: () => void) {
-    this._settingsBtn.connect('activate', (_obj: any) => {
-      callback();
-    });
-  }
+    onOpenSettings(callback: () => void) {
+        this._settingsBtn.connect('clicked', callback);
+    }
 }

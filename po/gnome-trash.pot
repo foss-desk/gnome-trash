@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-trash\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-22 21:09+0800\n"
+"POT-Creation-Date: 2026-11-05 20:41+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,37 +17,58 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Activation behavior"
-msgstr ""
-
-msgid "Are you sure you want to delete all items from the trash?"
-msgstr ""
-
-msgid "Cancel"
-msgstr ""
-
-msgid "Delete"
-msgstr ""
-
-msgid "Delete item permanently"
-msgstr ""
-
-msgid "Delete the file"
-msgstr ""
-
-msgid "Delete time"
-msgstr ""
-
-msgid "Empty"
+msgid "Open Trash"
 msgstr ""
 
 msgid "Empty Trash"
 msgstr ""
 
-msgid "Empty Trash?"
+msgid "Settings"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "OK"
+msgstr ""
+
+msgid "Restore"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Preferences"
+msgstr ""
+
+msgid "Sort trash by"
+msgstr ""
+
+msgid "Delete time"
 msgstr ""
 
 msgid "File name"
+msgstr ""
+
+msgid "Activation behavior"
+msgstr ""
+
+msgid "Open the file"
+msgstr ""
+
+msgid "Restore the file"
+msgstr ""
+
+msgid "Delete the file"
+msgstr ""
+
+msgid "Hide button when trash is empty"
+msgstr ""
+
+msgid "Search trash..."
+msgstr ""
+
+msgid "Trash is empty"
 msgstr ""
 
 msgid "Gnome Trash"
@@ -56,44 +77,29 @@ msgstr ""
 msgid "Gnome-trash failed to start"
 msgstr ""
 
-msgid "Hide button when trash is empty"
-msgstr ""
-
 msgid "No trash folder is detected."
 msgstr ""
 
-msgid "OK"
+msgid "Empty Trash?"
 msgstr ""
 
-msgid "Open Trash"
-msgstr ""
-
-msgid "Open the file"
-msgstr ""
-
-msgid "Operation failed"
-msgstr ""
-
-msgid "Preferences"
-msgstr ""
-
-msgid "Refusing to overwrite existing file."
-msgstr ""
-
-msgid "Restore"
-msgstr ""
-
-msgid "Restore item?"
-msgstr ""
-
-msgid "Restore the file"
-msgstr ""
-
-msgid "Sort trash by"
+msgid "Are you sure you want to delete all items from the trash?"
 msgstr ""
 
 msgid "This operation cannot be undone."
 msgstr ""
 
-msgid "Type here to search..."
+msgid "Empty"
+msgstr ""
+
+msgid "Delete item permanently"
+msgstr ""
+
+msgid "Restore item?"
+msgstr ""
+
+msgid "Operation failed"
+msgstr ""
+
+msgid "Refusing to overwrite existing file."
 msgstr ""

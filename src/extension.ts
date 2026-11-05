@@ -1,49 +1,44 @@
-// @ts-ignore
-const Me = imports.misc.extensionUtils.getCurrentExtension();
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 
-import * as TrashPanel from 'trashPanel';
-import * as log from 'log';
+import * as TrashPanel from './trashPanel.js';
+import * as TrashMenu from './trashMenu.js';
+import * as ActionBar from './actionBar.js';
+import * as ConfirmDialog from './confirmDialog.js';
+import * as SearchBox from './searchBox.js';
+import * as log from './log.js';
+import * as Settings from './settings.js';
 
-const Main = imports.ui.main;
-const ExtensionUtils = imports.misc.extensionUtils;
+export default class GnomeTrashExtension extends Extension {
+    private _panel: TrashPanel.TrashPanel | null = null;
 
-const GETTEXT_DOMAIN = 'gnome-trash';
-const Gettext = imports.gettext.domain(GETTEXT_DOMAIN);
-export const _ = Gettext.gettext;
+    enable() {
+        log.info(`enabling...`);
 
-export class GnomeExtension {
-  _uuid: any;
-  _panel: any | null;
+        // Initialize logging with settings
+        log.init(this.getSettings(Settings.SCHEMA_ID));
 
-  constructor(uuid: any) {
-    this._uuid = uuid;
+        if (!this._panel) {
+            // Every module keeps its own `_`, so each one has to be handed the
+            // extension's gettext or its strings stay in English.
+            const gettext = this.gettext.bind(this);
+            for (const mod of [TrashPanel, TrashMenu, ActionBar, ConfirmDialog, SearchBox])
+                mod.init(gettext);
 
-    ExtensionUtils.initTranslations(GETTEXT_DOMAIN);
-  }
-
-  enable() {
-    log.info(`enabling...`);
-
-    if (!this._panel) {
-      this._panel = new TrashPanel.TrashPanel();
-      Main.panel.addToStatusArea(this._uuid, this._panel);
+            this._panel = new TrashPanel.TrashPanel(this.getSettings(Settings.SCHEMA_ID), () =>
+                this.openPreferences(),
+            );
+            Main.panel.addToStatusArea(this.uuid, this._panel);
+            if (this._panel) this._panel.init();
+        }
     }
-  }
 
-  disable() {
-    log.info(`disabling...`);
+    disable() {
+        log.info(`disabling...`);
 
-    if (this._panel) {
-      this._panel.destroy();
-      this._panel = null;
+        if (this._panel) {
+            this._panel.destroy();
+            this._panel = null;
+        }
     }
-  }
 }
-
-// @ts-ignore
-function init(meta) {
-  log.info(`initializing Gnome Trash version ${Me.metadata.version} ...`);
-
-  return new GnomeExtension(meta.uuid);
-}
-

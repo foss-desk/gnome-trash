@@ -1,18 +1,239 @@
-.gnome-trash .modal-dialog {
-    min-width: 400px;
+/*
+ * Gnome Trash - Premium & Modern UI
+ * Inspired by Libadwaita and GNOME 45+ Design Principles
+ * GNOME Shell compatible: no CSS variables, no :root
+ */
+
+.gnome-trash {
+    font-size: 10.5pt;
+    color: rgba(255, 255, 255, 0.95);
 }
 
+/* ─── Scroll View ─────────────────────────────────────────── */
 .gnome-trash .scroll-view {
-    height: 500px;
-    width: 360px;
+    height: 520px;
+    width: 400px;
+    padding: 0;
+    margin: 4px 0;
+}
+
+.gnome-trash .scroll-view StScrollBar {
+    width: 8px;
+    padding: 2px;
+}
+
+.gnome-trash .scroll-view StScrollBar StButton#vhandle {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    margin: 2px;
+}
+
+.gnome-trash .scroll-view StScrollBar StButton#vhandle:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ─── Search Box ──────────────────────────────────────────── */
+.gnome-trash .search-box-container {
+    padding: 10px 12px 6px 12px;
+}
+
+.gnome-trash .search-box {
+    border-radius: 10px;
+    padding: 8px 12px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition-duration: 200ms;
+}
+
+.gnome-trash .search-box:focus {
+    border-color: #3584e4;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 2px rgba(53, 132, 228, 0.15);
+}
+
+.gnome-trash .search-box-icon {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* ─── Action Bar ──────────────────────────────────────────── */
+.gnome-trash .action-bar-container {
+    padding: 6px 12px 10px 12px;
 }
 
 .gnome-trash .action-bar {
-    padding: 0px;
-    margin: 0px;
+    border-radius: 10px;
+    padding: 4px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition-duration: 200ms;
 }
 
-.gnome-trash .action-bar-btn {
-    margin: 0px;
-    padding: 6px 12px 6px 12px;
+.gnome-trash .action-btn-content {
+    spacing: 6px;
+}
+
+/* ─── Action Buttons ──────────────────────────────────────── */
+.gnome-trash .action-btn {
+    border-radius: 8px;
+    padding: 8px;
+    transition-duration: 200ms;
+    border: 1px solid transparent;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.gnome-trash .action-btn:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.95);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.gnome-trash .action-btn:active {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.gnome-trash .action-btn-danger:hover {
+    background-color: rgba(246, 97, 81, 0.15);
+    color: #f66151;
+    border-color: rgba(246, 97, 81, 0.3);
+}
+
+/* ─── Trash Items ─────────────────────────────────────────── */
+.gnome-trash .trash-item {
+    margin: 3px 8px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    transition-duration: 200ms;
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+
+.gnome-trash .trash-item:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.09);
+}
+
+.gnome-trash .trash-item-text {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.92);
+    margin-left: 8px;
+}
+
+/* ─── Item Action Buttons ─────────────────────────────────── */
+.gnome-trash .item-action-btn {
+    border-radius: 6px;
+    padding: 5px;
+    margin-left: 4px;
+    transition-duration: 150ms;
+    opacity: 0;
+}
+
+.gnome-trash .trash-item:hover .item-action-btn {
+    opacity: 0.6;
+}
+
+.gnome-trash .item-action-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+}
+
+/* ─── Empty State ─────────────────────────────────────────── */
+.gnome-trash .empty-state {
+    padding: 60px 20px;
+    spacing: 14px;
+}
+
+.gnome-trash .empty-state-icon {
+    width: 72px;
+    height: 72px;
+    opacity: 0.18;
+    color: #3584e4;
+}
+
+.gnome-trash .empty-state-label {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+/* ─── Light popup variant ─────────────────────────────────────
+ * The rules above assume a dark popup. When the popup background is light,
+ * the extension adds the `light` class to the menu box (see
+ * _updateThemeVariant in trashPanel.ts) and these rules swap the translucent
+ * white overlays for translucent black ones.
+ */
+.gnome-trash.light {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.gnome-trash.light .scroll-view StScrollBar StButton#vhandle {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.gnome-trash.light .scroll-view StScrollBar StButton#vhandle:hover {
+    background-color: rgba(0, 0, 0, 0.35);
+}
+
+.gnome-trash.light .search-box {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.gnome-trash.light .search-box:focus {
+    border-color: #3584e4;
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.gnome-trash.light .search-box-icon {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.gnome-trash.light .action-bar {
+    background-color: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.gnome-trash.light .action-btn {
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.gnome-trash.light .action-btn:hover {
+    background-color: rgba(0, 0, 0, 0.07);
+    color: rgba(0, 0, 0, 0.87);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.gnome-trash.light .action-btn:active {
+    background-color: rgba(0, 0, 0, 0.12);
+}
+
+.gnome-trash.light .action-btn-danger:hover {
+    color: #c01c28;
+}
+
+.gnome-trash.light .trash-item:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.09);
+}
+
+.gnome-trash.light .trash-item-text {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.gnome-trash.light .item-action-btn:hover {
+    background-color: rgba(0, 0, 0, 0.09);
+}
+
+.gnome-trash.light .empty-state-icon {
+    color: #1c71d8;
+}
+
+.gnome-trash.light .empty-state-label {
+    color: rgba(0, 0, 0, 0.55);
+}
+
+/* ─── Preferences ─────────────────────────────────────────── */
+.prefs-page .pref-input {
+    min-width: 220px;
+    max-width: 360px;
+    width: auto;
 }

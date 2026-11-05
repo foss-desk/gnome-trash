@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-trash\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-22 21:09+0800\n"
+"POT-Creation-Date: 2026-11-05 20:41+0800\n"
 "PO-Revision-Date: 2023-08-25 22:03+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch\n"
@@ -17,38 +17,59 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 23.11.70\n"
 
-msgid "Activation behavior"
-msgstr "Opengedrag"
-
-msgid "Are you sure you want to delete all items from the trash?"
-msgstr "Weet u zeker dat u de prullenbak wilt legen?"
-
-msgid "Cancel"
-msgstr "Annuleren"
-
-msgid "Delete"
-msgstr "Verwĳderen"
-
-msgid "Delete item permanently"
-msgstr "Permanent verwĳderen"
-
-msgid "Delete the file"
-msgstr "Bestand verwĳderen"
-
-msgid "Delete time"
-msgstr "Verwĳderd om"
-
-msgid "Empty"
-msgstr "Leeg"
+msgid "Open Trash"
+msgstr "Prullenbak openen"
 
 msgid "Empty Trash"
 msgstr "Prullenbak legen"
 
-msgid "Empty Trash?"
-msgstr "Prullenbak legen?"
+msgid "Settings"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgid "OK"
+msgstr "Oké"
+
+msgid "Restore"
+msgstr "Herstellen"
+
+msgid "Delete"
+msgstr "Verwĳderen"
+
+msgid "Preferences"
+msgstr "Voorkeuren"
+
+msgid "Sort trash by"
+msgstr "Prullenbak sorteren op"
+
+msgid "Delete time"
+msgstr "Verwĳderd om"
 
 msgid "File name"
 msgstr "Bestandsnaam"
+
+msgid "Activation behavior"
+msgstr "Opengedrag"
+
+msgid "Open the file"
+msgstr "Bestand openen "
+
+msgid "Restore the file"
+msgstr "Bestand herstellen"
+
+msgid "Delete the file"
+msgstr "Bestand verwĳderen"
+
+msgid "Hide button when trash is empty"
+msgstr "Verbergen indien prullenbak leeg is"
+
+msgid "Search trash..."
+msgstr ""
+
+msgid "Trash is empty"
+msgstr ""
 
 msgid "Gnome Trash"
 msgstr "Gnome Prullenbak"
@@ -56,45 +77,32 @@ msgstr "Gnome Prullenbak"
 msgid "Gnome-trash failed to start"
 msgstr "Gnome Prullenbak kan niet worden gestart"
 
-msgid "Hide button when trash is empty"
-msgstr "Verbergen indien prullenbak leeg is"
-
 msgid "No trash folder is detected."
 msgstr "Er is geen prullenbakmap aangetroffen."
 
-msgid "OK"
-msgstr "Oké"
+msgid "Empty Trash?"
+msgstr "Prullenbak legen?"
 
-msgid "Open Trash"
-msgstr "Prullenbak openen"
-
-msgid "Open the file"
-msgstr "Bestand openen "
-
-msgid "Operation failed"
-msgstr "De actie kan niet worden uitgevoerd"
-
-msgid "Preferences"
-msgstr "Voorkeuren"
-
-msgid "Refusing to overwrite existing file."
-msgstr "Het oorspronkelijke bestand wordt niet overschreven."
-
-msgid "Restore"
-msgstr "Herstellen"
-
-msgid "Restore item?"
-msgstr "Item herstellen?"
-
-msgid "Restore the file"
-msgstr "Bestand herstellen"
-
-msgid "Sort trash by"
-msgstr "Prullenbak sorteren op"
+msgid "Are you sure you want to delete all items from the trash?"
+msgstr "Weet u zeker dat u de prullenbak wilt legen?"
 
 msgid "This operation cannot be undone."
 msgstr "Deze actie is onomkeerbaar."
 
-msgid "Type here to search..."
-msgstr "Typ om te zoeken…"
+msgid "Empty"
+msgstr "Leeg"
 
+msgid "Delete item permanently"
+msgstr "Permanent verwĳderen"
+
+msgid "Restore item?"
+msgstr "Item herstellen?"
+
+msgid "Operation failed"
+msgstr "De actie kan niet worden uitgevoerd"
+
+msgid "Refusing to overwrite existing file."
+msgstr "Het oorspronkelijke bestand wordt niet overschreven."
+
+#~ msgid "Type here to search..."
+#~ msgstr "Typ om te zoeken…"

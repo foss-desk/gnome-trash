@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-trash-translations-fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-22 21:09+0800\n"
+"POT-Creation-Date: 2026-11-05 20:41+0800\n"
 "PO-Revision-Date: 2020-04-22 19:17+0200\n"
 "Last-Translator: galen1423 <>\n"
 "Language-Team: French\n"
@@ -14,37 +14,58 @@ msgstr ""
 "X-Generator: Poedit 2.3\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-msgid "Activation behavior"
-msgstr ""
+msgid "Open Trash"
+msgstr "Ouvrir la corbeille"
 
-msgid "Are you sure you want to delete all items from the trash?"
-msgstr "Êtes-vous sur de vouloir supprimer tout le contenu de la corbeille ?"
+msgid "Empty Trash"
+msgstr "Vider la corbeille"
+
+msgid "Settings"
+msgstr ""
 
 msgid "Cancel"
 msgstr "Annuler"
 
+msgid "OK"
+msgstr ""
+
+msgid "Restore"
+msgstr "Restaurer"
+
 msgid "Delete"
 msgstr "Supprimer"
 
-msgid "Delete item permanently"
-msgstr "Supprimer l'élément de façon permanente"
+msgid "Preferences"
+msgstr ""
 
-msgid "Delete the file"
+msgid "Sort trash by"
 msgstr ""
 
 msgid "Delete time"
 msgstr ""
 
-msgid "Empty"
-msgstr "Vider"
-
-msgid "Empty Trash"
-msgstr "Vider la corbeille"
-
-msgid "Empty Trash?"
-msgstr "Vider la corbeille ?"
-
 msgid "File name"
+msgstr ""
+
+msgid "Activation behavior"
+msgstr ""
+
+msgid "Open the file"
+msgstr ""
+
+msgid "Restore the file"
+msgstr ""
+
+msgid "Delete the file"
+msgstr ""
+
+msgid "Hide button when trash is empty"
+msgstr ""
+
+msgid "Search trash..."
+msgstr ""
+
+msgid "Trash is empty"
 msgstr ""
 
 msgid "Gnome Trash"
@@ -53,47 +74,35 @@ msgstr ""
 msgid "Gnome-trash failed to start"
 msgstr "Gnome-trash a échoué à démarrer"
 
-msgid "Hide button when trash is empty"
-msgstr ""
-
 msgid "No trash folder is detected."
 msgstr "Aucun répertoire corbeille n'est détecté."
 
-msgid "OK"
-msgstr ""
+msgid "Empty Trash?"
+msgstr "Vider la corbeille ?"
 
-msgid "Open Trash"
-msgstr "Ouvrir la corbeille"
-
-msgid "Open the file"
-msgstr ""
-
-msgid "Operation failed"
-msgstr "L'opération a échoué"
-
-msgid "Preferences"
-msgstr ""
-
-msgid "Refusing to overwrite existing file."
-msgstr "Refuser d'écraser un fichier existant."
-
-msgid "Restore"
-msgstr "Restaurer"
-
-msgid "Restore item?"
-msgstr "Restaurer l'élément ?"
-
-msgid "Restore the file"
-msgstr ""
-
-msgid "Sort trash by"
-msgstr ""
+msgid "Are you sure you want to delete all items from the trash?"
+msgstr "Êtes-vous sur de vouloir supprimer tout le contenu de la corbeille ?"
 
 msgid "This operation cannot be undone."
 msgstr "Cette opération ne peut être annulée."
 
-msgid "Type here to search..."
-msgstr "Saisir ici votre recherche..."
+msgid "Empty"
+msgstr "Vider"
+
+msgid "Delete item permanently"
+msgstr "Supprimer l'élément de façon permanente"
+
+msgid "Restore item?"
+msgstr "Restaurer l'élément ?"
+
+msgid "Operation failed"
+msgstr "L'opération a échoué"
+
+msgid "Refusing to overwrite existing file."
+msgstr "Refuser d'écraser un fichier existant."
+
+#~ msgid "Type here to search..."
+#~ msgstr "Saisir ici votre recherche..."
 
 #, javascript-format
 #~ msgid "Are you sure you want to delete '%s'?"

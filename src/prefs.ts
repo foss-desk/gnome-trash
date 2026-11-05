@@ -1,141 +1,79 @@
-'use strict';
+import Gio from 'gi://Gio';
+import Gtk from 'gi://Gtk';
+import Adw from 'gi://Adw';
+import Gdk from 'gi://Gdk';
 
-// @ts-ignore
-const Me = imports.misc.extensionUtils.getCurrentExtension();
+import { ExtensionPreferences } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
+import * as Settings from './settings.js';
 
-const Gio = imports.gi.Gio;
-const Gtk = imports.gi.Gtk;
-const GObject = imports.gi.GObject;
+export default class GnomeTrashPreferences extends ExtensionPreferences {
+    fillPreferencesWindow(window: Adw.PreferencesWindow) {
+        this._loadPreferencesStyle();
 
-const ExtensionUtils = imports.misc.extensionUtils;
+        const settings = this.getSettings(Settings.SCHEMA_ID);
 
-import * as log from 'log';
-import * as Settings from 'settings';
+        const page = new Adw.PreferencesPage();
+        page.add_css_class('prefs-page');
+        window.add(page);
 
-
-const Gettext = imports.gettext;
-const _ = Gettext.domain('gnome-trash').gettext;
-
-export function init() {
-    Gtk.init();
-}
-
-export function buildPrefsWidget() {
-    let settings = ExtensionUtils.getSettings(Settings.SCHEMA_ID);
-
-    let box = new Gtk.Box({
-        orientation: Gtk.Orientation.VERTICAL,
-        margin_start: 18,
-        margin_end: 18,
-        margin_top: 18,
-        margin_bottom: 18,
-    });
-
-    let prefsFrame = new Gtk.Frame({
-        label: _("Preferences"),
-    });
-    box.append(prefsFrame);
-
-    let prefsGrid = new Gtk.Grid({
-        column_spacing: 12,
-        row_spacing: 12,
-        row_homogeneous: false,
-        column_homogeneous: true,
-        margin_start: 18,
-        margin_end: 18,
-        margin_top: 18,
-        margin_bottom: 18,
-    });
-
-    let row = 0
-    let addRowAndBindSetting = function (grid: any, widget: any, name: string, desc: string) {
-
-        let label = new Gtk.Label({
-            label: desc,
-            halign: Gtk.Align.START,
+        const group = new Adw.PreferencesGroup({
+            title: this.gettext('Preferences'),
         });
-        widget.set_tooltip_text(desc);
+        page.add(group);
 
-        grid.attach(label, 0, row, 1, 1);
-        grid.attach(widget, 1, row, 1, 1);
-
-        if (widget instanceof Gtk.Switch || widget instanceof Gtk.ComboBox) {
-            widget.active = settings.get_boolean(name)
-            settings.bind(
-                name,
-                widget,
-                'active',
-                Gio.SettingsBindFlags.DEFAULT
-            );
-        } else if (widget instanceof Gtk.SpinButton) {
-            widget.value = settings.get_uint(name)
-            settings.bind(
-                name,
-                widget,
-                'value',
-                Gio.SettingsBindFlags.DEFAULT
-            );
-        } else {
-            log.error("Invalid prefs widget")
-        }
-
-        row++;
-    };
-
-    {
-        let store = new Gtk.ListStore();
-        store.set_column_types([GObject.TYPE_STRING]);
-        let items = [
-            _("File name"),
-            _("Delete time"),
-        ];
-        for (let i of items) {
-            store.set(store.append(), [0], [i]);
-        }
-
-        let widget = new Gtk.ComboBox({
-            halign: Gtk.Align.END,
-            model: store,
+        // Sort trash by
+        const sortRow = new Adw.ComboRow({
+            title: this.gettext('Sort trash by'),
         });
-        let renderer = new Gtk.CellRendererText();
-        widget.pack_start(renderer, true);
-        widget.add_attribute(renderer, "text", 0);
+        sortRow.set_model(
+            Gtk.StringList.new([this.gettext('File name'), this.gettext('Delete time')]),
+        );
+        settings.bind(Settings.TRASH_SORT, sortRow, 'selected', Gio.SettingsBindFlags.DEFAULT);
+        group.add(sortRow);
 
-        addRowAndBindSetting(prefsGrid, widget, Settings.TRASH_SORT, _("Sort trash by"));
+        // Activation behavior
+        const activationRow = new Adw.ComboRow({
+            title: this.gettext('Activation behavior'),
+        });
+        activationRow.set_model(
+            Gtk.StringList.new([
+                this.gettext('Open the file'),
+                this.gettext('Restore the file'),
+                this.gettext('Delete the file'),
+            ]),
+        );
+        settings.bind(
+            Settings.ACTIVATION,
+            activationRow,
+            'selected',
+            Gio.SettingsBindFlags.DEFAULT,
+        );
+        group.add(activationRow);
+
+        // Hide button when trash is empty
+        const hideRow = new Adw.SwitchRow({
+            title: this.gettext('Hide button when trash is empty'),
+        });
+        settings.bind(Settings.HIDE_BUTTON, hideRow, 'active', Gio.SettingsBindFlags.DEFAULT);
+        group.add(hideRow);
     }
 
-    {
-        let store = new Gtk.ListStore();
-        store.set_column_types([GObject.TYPE_STRING]);
-        let items = [
-            _("Open the file"),
-            _("Restore the file"),
-            _("Delete the file"),
-        ];
-        for (let i of items) {
-            store.set(store.append(), [0], [i]);
+    private _loadPreferencesStyle(): void {
+        try {
+            const cssPath = this.dir.get_child('stylesheet.css').get_path();
+            const provider = new Gtk.CssProvider();
+            provider.load_from_path(cssPath);
+
+            const display = Gdk.Display.get_default();
+            if (display) {
+                Gtk.StyleContext.add_provider_for_display(
+                    display,
+                    provider,
+                    Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
+                );
+            }
+        } catch (error) {
+            console.error('Failed to load preferences stylesheet:', error);
         }
-
-        let widget = new Gtk.ComboBox({
-            halign: Gtk.Align.END,
-            model: store,
-        });
-        let renderer = new Gtk.CellRendererText();
-        widget.pack_start(renderer, true);
-        widget.add_attribute(renderer, "text", 0);
-
-        addRowAndBindSetting(prefsGrid, widget, Settings.ACTIVATION, _("Activation behavior"));
     }
-
-    {
-        let widget = new Gtk.Switch({
-            halign: Gtk.Align.END,
-        });
-
-        addRowAndBindSetting(prefsGrid, widget, Settings.HIDE_BUTTON, _("Hide button when trash is empty"));
-    }
-
-    prefsFrame.set_child(prefsGrid);
-
-    return box;
 }

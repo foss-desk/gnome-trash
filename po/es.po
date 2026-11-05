@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-trash\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-22 21:09+0800\n"
+"POT-Creation-Date: 2026-11-05 20:41+0800\n"
 "PO-Revision-Date: 2020-05-17 19:36+0200\n"
 "Last-Translator: Carlos Suárez <bitseater@gmail.com>\n"
 "Language-Team: \n"
@@ -18,37 +18,58 @@ msgstr ""
 "X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Activation behavior"
-msgstr ""
+msgid "Open Trash"
+msgstr "Abrir Papelera"
 
-msgid "Are you sure you want to delete all items from the trash?"
-msgstr "¿Seguro que quiere borrar todos los elementos de la papelera?"
+msgid "Empty Trash"
+msgstr "Vaciar Papelera"
+
+msgid "Settings"
+msgstr ""
 
 msgid "Cancel"
 msgstr "Cancelar"
 
+msgid "OK"
+msgstr ""
+
+msgid "Restore"
+msgstr "Restaurar"
+
 msgid "Delete"
 msgstr "Borrar"
 
-msgid "Delete item permanently"
-msgstr "Borrar elemento permanentemente"
+msgid "Preferences"
+msgstr ""
 
-msgid "Delete the file"
+msgid "Sort trash by"
 msgstr ""
 
 msgid "Delete time"
 msgstr ""
 
-msgid "Empty"
-msgstr "Vaciar"
-
-msgid "Empty Trash"
-msgstr "Vaciar Papelera"
-
-msgid "Empty Trash?"
-msgstr "¿Vaciar Papelera?"
-
 msgid "File name"
+msgstr ""
+
+msgid "Activation behavior"
+msgstr ""
+
+msgid "Open the file"
+msgstr ""
+
+msgid "Restore the file"
+msgstr ""
+
+msgid "Delete the file"
+msgstr ""
+
+msgid "Hide button when trash is empty"
+msgstr ""
+
+msgid "Search trash..."
+msgstr ""
+
+msgid "Trash is empty"
 msgstr ""
 
 msgid "Gnome Trash"
@@ -57,47 +78,35 @@ msgstr ""
 msgid "Gnome-trash failed to start"
 msgstr "Gnome-trash falló al inicio"
 
-msgid "Hide button when trash is empty"
-msgstr ""
-
 msgid "No trash folder is detected."
 msgstr "No se detecta carpeta de Papelera."
 
-msgid "OK"
-msgstr ""
+msgid "Empty Trash?"
+msgstr "¿Vaciar Papelera?"
 
-msgid "Open Trash"
-msgstr "Abrir Papelera"
-
-msgid "Open the file"
-msgstr ""
-
-msgid "Operation failed"
-msgstr "Operación fallida"
-
-msgid "Preferences"
-msgstr ""
-
-msgid "Refusing to overwrite existing file."
-msgstr "Rehusando sobreescribir archivo existente."
-
-msgid "Restore"
-msgstr "Restaurar"
-
-msgid "Restore item?"
-msgstr "¿Restaurar elemento?"
-
-msgid "Restore the file"
-msgstr ""
-
-msgid "Sort trash by"
-msgstr ""
+msgid "Are you sure you want to delete all items from the trash?"
+msgstr "¿Seguro que quiere borrar todos los elementos de la papelera?"
 
 msgid "This operation cannot be undone."
 msgstr "Esta operación no puede ser deshecha."
 
-msgid "Type here to search..."
-msgstr "Escriba aquí para buscar..."
+msgid "Empty"
+msgstr "Vaciar"
+
+msgid "Delete item permanently"
+msgstr "Borrar elemento permanentemente"
+
+msgid "Restore item?"
+msgstr "¿Restaurar elemento?"
+
+msgid "Operation failed"
+msgstr "Operación fallida"
+
+msgid "Refusing to overwrite existing file."
+msgstr "Rehusando sobreescribir archivo existente."
+
+#~ msgid "Type here to search..."
+#~ msgstr "Escriba aquí para buscar..."
 
 #, javascript-format
 #~ msgid "Are you sure you want to delete '%s'?"

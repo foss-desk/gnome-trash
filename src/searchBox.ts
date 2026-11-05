@@ -1,48 +1,67 @@
-const { St, GObject } = imports.gi;
-const PopupMenu = imports.ui.popupMenu
+import St from 'gi://St';
+import GObject from 'gi://GObject';
+import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 
-export class SearchBox
-  extends PopupMenu.PopupBaseMenuItem {
+let _ = (s: string) => s;
 
-  static {
-    GObject.registerClass(this);
-  }
+export function init(gettextFunc: (s: string) => string) {
+    _ = gettextFunc;
+}
 
-  constructor() {
-    super({
-      reactive: false,
-      can_focus: true,
-    })
+export class SearchBox extends PopupMenu.PopupBaseMenuItem {
+    public searchEntry: St.Entry;
 
-    // TODO: add 'x' clear button inside the search box
-    // --------------------------------------------------
-    // |                                              X |
-    // --------------------------------------------------
-    this.searchEntry = new St.Entry({
-      style_class: 'search-box',
-      can_focus: true,
-      hint_text: _('Type here to search...'),
-      track_hover: true
-    });
+    static {
+        GObject.registerClass(this);
+    }
 
-    this.searchEntry.set_x_expand(true);
+    constructor() {
+        super({
+            reactive: false,
+            can_focus: false,
+            style_class: 'search-box-container',
+        });
 
-    this.actor.add_child(this.searchEntry);
+        this.searchEntry = new St.Entry({
+            style_class: 'search-box',
+            can_focus: true,
+            hint_text: _('Search trash...'),
+            track_hover: true,
+            x_expand: true,
+        });
 
-  }
+        // Add search icon
+        const searchIcon = new St.Icon({
+            icon_name: 'edit-find-symbolic',
+            style_class: 'search-box-icon',
+            icon_size: 16,
+        });
+        this.searchEntry.set_primary_icon(searchIcon);
 
-  onTextChanged(callback: any) {
-    this.searchEntry.get_clutter_text().connect(
-      'text-changed',
-      callback
-    );
-  }
+        // Clear button
+        const clearIcon = new St.Icon({
+            icon_name: 'edit-clear-symbolic',
+            style_class: 'search-box-icon',
+            icon_size: 16,
+        });
 
-  getText() {
-    return this.searchEntry.get_text();
-  }
+        this.searchEntry.set_secondary_icon(clearIcon);
+        this.searchEntry.connect('secondary-icon-clicked', () => {
+            this.searchEntry.set_text('');
+        });
 
-  setText(text: string) {
-    return this.searchEntry.set_text(text);
-  }
+        this.add_child(this.searchEntry);
+    }
+
+    onTextChanged(callback: any) {
+        this.searchEntry.get_clutter_text().connect('text-changed', callback);
+    }
+
+    getText() {
+        return this.searchEntry.get_text();
+    }
+
+    setText(text: string) {
+        return this.searchEntry.set_text(text);
+    }
 }
