@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-trash\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-22 21:09+0800\n"
+"POT-Creation-Date: 2026-11-05 20:41+0800\n"
 "PO-Revision-Date: 2013-05-23 00:18+0100\n"
 "Last-Translator: Jonatan Zeidler <jonatan_zeidler@hotmail.de>\n"
 "Language-Team: German <jonatan_zeidler@gmx.de>\n"
@@ -19,37 +19,58 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-msgid "Activation behavior"
-msgstr ""
+msgid "Open Trash"
+msgstr "Mülleimer öffnen"
 
-msgid "Are you sure you want to delete all items from the trash?"
-msgstr "Sollen alle Objekte aus dem Papierkorb entfernt werden?"
+msgid "Empty Trash"
+msgstr "Mülleimer leeren"
+
+msgid "Settings"
+msgstr ""
 
 msgid "Cancel"
 msgstr "Abbrechen"
 
+msgid "OK"
+msgstr ""
+
+msgid "Restore"
+msgstr ""
+
 msgid "Delete"
 msgstr ""
 
-msgid "Delete item permanently"
+msgid "Preferences"
 msgstr ""
 
-msgid "Delete the file"
+msgid "Sort trash by"
 msgstr ""
 
 msgid "Delete time"
 msgstr ""
 
-msgid "Empty"
-msgstr "Leeren"
-
-msgid "Empty Trash"
-msgstr "Mülleimer leeren"
-
-msgid "Empty Trash?"
-msgstr "Mülleimer leeren?"
-
 msgid "File name"
+msgstr ""
+
+msgid "Activation behavior"
+msgstr ""
+
+msgid "Open the file"
+msgstr ""
+
+msgid "Restore the file"
+msgstr ""
+
+msgid "Delete the file"
+msgstr ""
+
+msgid "Hide button when trash is empty"
+msgstr ""
+
+msgid "Search trash..."
+msgstr ""
+
+msgid "Trash is empty"
 msgstr ""
 
 msgid "Gnome Trash"
@@ -58,46 +79,31 @@ msgstr ""
 msgid "Gnome-trash failed to start"
 msgstr ""
 
-msgid "Hide button when trash is empty"
-msgstr ""
-
 msgid "No trash folder is detected."
 msgstr ""
 
-msgid "OK"
-msgstr ""
+msgid "Empty Trash?"
+msgstr "Mülleimer leeren?"
 
-msgid "Open Trash"
-msgstr "Mülleimer öffnen"
+msgid "Are you sure you want to delete all items from the trash?"
+msgstr "Sollen alle Objekte aus dem Papierkorb entfernt werden?"
 
-msgid "Open the file"
-msgstr ""
+msgid "This operation cannot be undone."
+msgstr "Alle Objekte im Papierkorb werden dauerhaft gelöscht."
 
-msgid "Operation failed"
-msgstr ""
+msgid "Empty"
+msgstr "Leeren"
 
-msgid "Preferences"
-msgstr ""
-
-msgid "Refusing to overwrite existing file."
-msgstr ""
-
-msgid "Restore"
+msgid "Delete item permanently"
 msgstr ""
 
 msgid "Restore item?"
 msgstr ""
 
-msgid "Restore the file"
+msgid "Operation failed"
 msgstr ""
 
-msgid "Sort trash by"
-msgstr ""
-
-msgid "This operation cannot be undone."
-msgstr "Alle Objekte im Papierkorb werden dauerhaft gelöscht."
-
-msgid "Type here to search..."
+msgid "Refusing to overwrite existing file."
 msgstr ""
 
 #~ msgid "Trash"

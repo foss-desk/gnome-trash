@@ -1,89 +1,96 @@
-// @ts-ignore
-const Me = imports.misc.extensionUtils.getCurrentExtension();
+import St from 'gi://St';
+import GObject from 'gi://GObject';
+import Clutter from 'gi://Clutter';
+import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 
-import * as TrashItem from './trashItem';
+import * as TrashItem from './trashItem.js';
+import * as utils from './utils.js';
+import * as Tooltip from './tooltip.js';
 
-const St = imports.gi.St;
-const PopupMenu = imports.ui.popupMenu;
-const GObject = imports.gi.GObject;
-const Clutter = imports.gi.Clutter;
+let _ = (s: string) => s;
 
-export class MenuItem extends
-  PopupMenu.PopupBaseMenuItem {
+export function init(gettextFunc: (s: string) => string) {
+    _ = gettextFunc;
+}
 
-  static {
-    GObject.registerClass(this);
-  }
+export class MenuItem extends PopupMenu.PopupBaseMenuItem {
+    public fileInfo: TrashItem.TrashItem;
 
-  constructor(
-    fileInfo: TrashItem.TrashItem,
-    onActivate: (item: MenuItem) => void,
-    onDelete: (item: MenuItem) => void,
-    onRestore: (item: MenuItem) => void) {
+    static {
+        GObject.registerClass(this);
+    }
 
-    super()
+    constructor(
+        fileInfo: TrashItem.TrashItem,
+        onActivate: (item: MenuItem) => void,
+        onDelete: (item: MenuItem) => void,
+        onRestore: (item: MenuItem) => void,
+    ) {
+        super({ style_class: 'trash-item' });
 
-    this.fileInfo = fileInfo;
+        this.fileInfo = fileInfo;
 
-    let icon = new St.Icon({
-      gicon: fileInfo.icon,
-      style_class: 'popup-menu-icon'
-    });
-    this.add_child(icon);
+        const row = new St.BoxLayout({
+            ...utils.boxOrientation(Clutter.Orientation.HORIZONTAL),
+            x_expand: true,
+            y_align: Clutter.ActorAlign.CENTER,
+        });
 
-    let label = new St.Label({ text: fileInfo.display() });
-    this.add_child(label);
-    this.connect('activate', () => {
-      onActivate(this);
-    });
+        const icon = new St.Icon({
+            gicon: fileInfo.icon,
+            style_class: 'popup-menu-icon',
+            icon_size: 16,
+        });
+        row.add_child(icon);
 
-    // restore button
-    let restoreIcon = new St.Icon({
-      icon_name: "edit-undo-symbolic",
-      style_class: "popup-menu-icon",
-    });
+        const label = new St.Label({
+            text: fileInfo.display(),
+            style_class: 'trash-item-text',
+            x_expand: true,
+            y_align: Clutter.ActorAlign.CENTER,
+        });
+        row.add_child(label);
 
+        const actionBox = new St.BoxLayout({
+            ...utils.boxOrientation(Clutter.Orientation.HORIZONTAL),
+            x_align: Clutter.ActorAlign.END,
+            y_align: Clutter.ActorAlign.CENTER,
+        });
 
-    let restoreBtn = new St.Button({
-      style_class: 'action-btn',
-      child: restoreIcon
-    });
+        // Restore button
+        const restoreBtn = this._createActionBtn('edit-undo-symbolic');
+        Tooltip.attachTooltip(restoreBtn, () => _('Restore'));
+        restoreBtn.connect('clicked', () => onRestore(this));
+        actionBox.add_child(restoreBtn);
 
-    restoreBtn.set_x_align(Clutter.ActorAlign.END);
-    restoreBtn.set_x_expand(true);
-    restoreBtn.set_y_expand(true);
+        // Delete button
+        const deleteBtn = this._createActionBtn('edit-delete-symbolic', 'remove-icon');
+        Tooltip.attachTooltip(deleteBtn, () => _('Delete'));
+        deleteBtn.connect('clicked', () => onDelete(this));
+        actionBox.add_child(deleteBtn);
 
-    this.actor.add_child(restoreBtn);
-    restoreBtn.connect('button-press-event',
-      () => {
-        onRestore(this);
-      }
-    );
+        row.add_child(actionBox);
+        this.add_child(row);
 
-    // delete button
-    let deleteIcon = new St.Icon({
-      icon_name: "edit-delete-symbolic",
-      style_class: 'popup-menu-icon'
-    });
+        this.connect('activate', () => {
+            onActivate(this);
+        });
+    }
 
-    let deleteBtn = new St.Button({
-      style_class: 'action-btn',
-      child: deleteIcon
-    });
+    private _createActionBtn(iconName: string, extraClass: string = '') {
+        return new St.Button({
+            style_class: `item-action-btn ${extraClass}`,
+            child: new St.Icon({
+                icon_name: iconName,
+                icon_size: 14,
+                style_class: 'popup-menu-icon',
+            }),
+            can_focus: true,
+            track_hover: true,
+        });
+    }
 
-    deleteBtn.set_x_align(Clutter.ActorAlign.END);
-    deleteBtn.set_x_expand(false);
-    deleteBtn.set_y_expand(true);
-
-    this.actor.add_child(deleteBtn);
-    deleteBtn.connect('button-press-event',
-      () => {
-        onDelete(this);
-      }
-    );
-  }
-
-  public text(): string {
-    return this.fileInfo.filename;
-  }
+    public text(): string {
+        return this.fileInfo.filename;
+    }
 }

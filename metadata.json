@@ -1,13 +1,10 @@
 {
-  "shell-version": [
-    "40",
-    "41",
-    "42"
-  ],
-  "version": 2,
-  "gettext-domain" : "gnome-trash",
-  "uuid": "gnome-trash@b00f.github.io",
-  "name": "Gnome Trash",
-  "description": "A gnome shell extension to manage your home trash. You can manage trash items from the panel and open or empty the trash.",
-  "url": "https://github.com/b00f/gnome-trash"
+    "shell-version": ["45", "46", "47", "48", "49", "50", "51"],
+    "version": 3,
+    "gettext-domain": "gnome-trash",
+    "settings-schema": "org.gnome.shell.extensions.gnome-trash",
+    "uuid": "gnome-trash@b00f.github.io",
+    "name": "Gnome Trash",
+    "description": "A gnome shell extension to manage your home trash. You can manage trash items from the panel and open or empty the trash.",
+    "url": "https://github.com/foss-desk/gnome-trash"
 }

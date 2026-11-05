@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-trash\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-22 21:09+0800\n"
+"POT-Creation-Date: 2026-11-05 20:41+0800\n"
 "PO-Revision-Date: 2020-04-20 11:37+0800\n"
 "Last-Translator:  <mostafa.sedaghat@gmail.com>\n"
 "Language-Team: Persian <translation-team-fa@lists.sourceforge.net>\n"
@@ -16,37 +16,58 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Activation behavior"
-msgstr ""
+msgid "Open Trash"
+msgstr "باز کردن زباله‌دان"
 
-msgid "Are you sure you want to delete all items from the trash?"
-msgstr "مطمئنید می‌خواهید همه آیتمهای زباله‌دان را حذف کنید؟"
+msgid "Empty Trash"
+msgstr "خالی کردن زباله‌دان "
+
+msgid "Settings"
+msgstr ""
 
 msgid "Cancel"
 msgstr "لغو"
 
+msgid "OK"
+msgstr ""
+
+msgid "Restore"
+msgstr "بازیابی"
+
 msgid "Delete"
 msgstr "حذف"
 
-msgid "Delete item permanently"
-msgstr "حذف آیتم برای همیشه"
+msgid "Preferences"
+msgstr ""
 
-msgid "Delete the file"
+msgid "Sort trash by"
 msgstr ""
 
 msgid "Delete time"
 msgstr ""
 
-msgid "Empty"
-msgstr "خالی کردن"
-
-msgid "Empty Trash"
-msgstr "خالی کردن زباله‌دان "
-
-msgid "Empty Trash?"
-msgstr "خالی کردن زباله‌دان؟"
-
 msgid "File name"
+msgstr ""
+
+msgid "Activation behavior"
+msgstr ""
+
+msgid "Open the file"
+msgstr ""
+
+msgid "Restore the file"
+msgstr ""
+
+msgid "Delete the file"
+msgstr ""
+
+msgid "Hide button when trash is empty"
+msgstr ""
+
+msgid "Search trash..."
+msgstr ""
+
+msgid "Trash is empty"
 msgstr ""
 
 msgid "Gnome Trash"
@@ -55,47 +76,35 @@ msgstr ""
 msgid "Gnome-trash failed to start"
 msgstr "زباله‌دان گنوم موفق به اجرا نشد"
 
-msgid "Hide button when trash is empty"
-msgstr ""
-
 msgid "No trash folder is detected."
 msgstr "هیچ زباله‌دانی یافت نشد"
 
-msgid "OK"
-msgstr ""
+msgid "Empty Trash?"
+msgstr "خالی کردن زباله‌دان؟"
 
-msgid "Open Trash"
-msgstr "باز کردن زباله‌دان"
-
-msgid "Open the file"
-msgstr ""
-
-msgid "Operation failed"
-msgstr "عملیات ناموفق"
-
-msgid "Preferences"
-msgstr ""
-
-msgid "Refusing to overwrite existing file."
-msgstr "فایل مقصد موجود می‌باشد"
-
-msgid "Restore"
-msgstr "بازیابی"
-
-msgid "Restore item?"
-msgstr "بازیابی آیتم؟"
-
-msgid "Restore the file"
-msgstr ""
-
-msgid "Sort trash by"
-msgstr ""
+msgid "Are you sure you want to delete all items from the trash?"
+msgstr "مطمئنید می‌خواهید همه آیتمهای زباله‌دان را حذف کنید؟"
 
 msgid "This operation cannot be undone."
 msgstr "این عملیات برگشت پذیر نیست."
 
-msgid "Type here to search..."
-msgstr "برای جستجو اینجا تایپ کنید..."
+msgid "Empty"
+msgstr "خالی کردن"
+
+msgid "Delete item permanently"
+msgstr "حذف آیتم برای همیشه"
+
+msgid "Restore item?"
+msgstr "بازیابی آیتم؟"
+
+msgid "Operation failed"
+msgstr "عملیات ناموفق"
+
+msgid "Refusing to overwrite existing file."
+msgstr "فایل مقصد موجود می‌باشد"
+
+#~ msgid "Type here to search..."
+#~ msgstr "برای جستجو اینجا تایپ کنید..."
 
 #, javascript-format
 #~ msgid "Are you sure you want to delete '%s'?"
