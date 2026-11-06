@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-trash\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-05 20:41+0800\n"
+"POT-Creation-Date: 2026-11-06 12:00+0800\n"
 "PO-Revision-Date: 2020-05-17 19:36+0200\n"
 "Last-Translator: Carlos Suárez <bitseater@gmail.com>\n"
 "Language-Team: \n"
@@ -25,13 +25,16 @@ msgid "Empty Trash"
 msgstr "Vaciar Papelera"
 
 msgid "Settings"
-msgstr ""
+msgstr "Configuración"
 
 msgid "Cancel"
 msgstr "Cancelar"
 
 msgid "OK"
-msgstr ""
+msgstr "Aceptar"
+
+msgid "Deleted"
+msgstr "Borrado"
 
 msgid "Restore"
 msgstr "Restaurar"
@@ -40,40 +43,40 @@ msgid "Delete"
 msgstr "Borrar"
 
 msgid "Preferences"
-msgstr ""
+msgstr "Preferencias"
 
 msgid "Sort trash by"
-msgstr ""
+msgstr "Ordenar la papelera por"
 
 msgid "Delete time"
-msgstr ""
+msgstr "Fecha de borrado"
 
 msgid "File name"
-msgstr ""
+msgstr "Nombre del archivo"
 
 msgid "Activation behavior"
-msgstr ""
+msgstr "Comportamiento al activar"
 
 msgid "Open the file"
-msgstr ""
+msgstr "Abrir el archivo"
 
 msgid "Restore the file"
-msgstr ""
+msgstr "Restaurar el archivo"
 
 msgid "Delete the file"
-msgstr ""
+msgstr "Borrar el archivo"
 
 msgid "Hide button when trash is empty"
-msgstr ""
+msgstr "Ocultar el botón cuando la papelera esté vacía"
 
 msgid "Search trash..."
-msgstr ""
+msgstr "Buscar en la papelera…"
 
 msgid "Trash is empty"
-msgstr ""
+msgstr "La papelera está vacía"
 
 msgid "Gnome Trash"
-msgstr ""
+msgstr "Papelera de GNOME"
 
 msgid "Gnome-trash failed to start"
 msgstr "Gnome-trash falló al inicio"

@@ -1,6 +1,5 @@
 {
     "shell-version": ["45", "46", "47", "48", "49", "50", "51"],
-    "version": 3,
     "gettext-domain": "gnome-trash",
     "settings-schema": "org.gnome.shell.extensions.gnome-trash",
     "uuid": "gnome-trash@b00f.github.io",

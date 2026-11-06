@@ -118,6 +118,18 @@
     margin-left: 8px;
 }
 
+.gnome-trash .trash-item-subtext {
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.45);
+    margin-left: 8px;
+    margin-top: 1px;
+}
+
+.gnome-trash .trash-item-location {
+    color: rgba(255, 255, 255, 0.32);
+    font-size: 0.8em;
+}
+
 /* ─── Item Action Buttons ─────────────────────────────────── */
 .gnome-trash .item-action-btn {
     border-radius: 6px;
@@ -217,6 +229,14 @@
 
 .gnome-trash.light .trash-item-text {
     color: rgba(0, 0, 0, 0.87);
+}
+
+.gnome-trash.light .trash-item-subtext {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.gnome-trash.light .trash-item-location {
+    color: rgba(0, 0, 0, 0.4);
 }
 
 .gnome-trash.light .item-action-btn:hover {

@@ -43,13 +43,34 @@ export class MenuItem extends PopupMenu.PopupBaseMenuItem {
         });
         row.add_child(icon);
 
+        const textBox = new St.BoxLayout({
+            ...utils.boxOrientation(Clutter.Orientation.VERTICAL),
+            x_expand: true,
+            y_align: Clutter.ActorAlign.CENTER,
+        });
+
         const label = new St.Label({
             text: fileInfo.display(),
             style_class: 'trash-item-text',
             x_expand: true,
-            y_align: Clutter.ActorAlign.CENTER,
         });
-        row.add_child(label);
+        textBox.add_child(label);
+
+        const deletedAt = new St.Label({
+            text: `${_('Deleted')} ${fileInfo.deletedAtDisplay()}`,
+            style_class: 'trash-item-subtext',
+            x_expand: true,
+        });
+        textBox.add_child(deletedAt);
+
+        const location = new St.Label({
+            text: fileInfo.location(),
+            style_class: 'trash-item-subtext trash-item-location',
+            x_expand: true,
+        });
+        textBox.add_child(location);
+
+        row.add_child(textBox);
 
         const actionBox = new St.BoxLayout({
             ...utils.boxOrientation(Clutter.Orientation.HORIZONTAL),

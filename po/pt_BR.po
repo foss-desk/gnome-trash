@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-trash\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-05 20:41+0800\n"
+"POT-Creation-Date: 2026-11-06 12:00+0800\n"
 "PO-Revision-Date: 2013-05-23 00:18+0100\n"
 "Last-Translator: Jonatan Zeidler <jonatan_zeidler@hotmail.de>\n"
 "Language-Team: Brazilian Portuguese <renato.cferreira@hotmail.com>\n"
@@ -26,61 +26,64 @@ msgid "Empty Trash"
 msgstr "Lixeira vazia"
 
 msgid "Settings"
-msgstr ""
+msgstr "Configurações"
 
 msgid "Cancel"
 msgstr "Cancelar"
 
 msgid "OK"
-msgstr ""
+msgstr "OK"
+
+msgid "Deleted"
+msgstr "Excluído"
 
 msgid "Restore"
-msgstr ""
+msgstr "Restaurar"
 
 msgid "Delete"
-msgstr ""
+msgstr "Excluir"
 
 msgid "Preferences"
-msgstr ""
+msgstr "Preferências"
 
 msgid "Sort trash by"
-msgstr ""
+msgstr "Ordenar a lixeira por"
 
 msgid "Delete time"
-msgstr ""
+msgstr "Data de exclusão"
 
 msgid "File name"
-msgstr ""
+msgstr "Nome do arquivo"
 
 msgid "Activation behavior"
-msgstr ""
+msgstr "Comportamento ao ativar"
 
 msgid "Open the file"
-msgstr ""
+msgstr "Abrir o arquivo"
 
 msgid "Restore the file"
-msgstr ""
+msgstr "Restaurar o arquivo"
 
 msgid "Delete the file"
-msgstr ""
+msgstr "Excluir o arquivo"
 
 msgid "Hide button when trash is empty"
-msgstr ""
+msgstr "Ocultar o botão quando a lixeira estiver vazia"
 
 msgid "Search trash..."
-msgstr ""
+msgstr "Pesquisar na lixeira..."
 
 msgid "Trash is empty"
-msgstr ""
+msgstr "A lixeira está vazia"
 
 msgid "Gnome Trash"
-msgstr ""
+msgstr "Lixeira do Gnome"
 
 msgid "Gnome-trash failed to start"
-msgstr ""
+msgstr "O Gnome-trash falhou ao iniciar"
 
 msgid "No trash folder is detected."
-msgstr ""
+msgstr "Nenhuma pasta de lixeira foi detectada."
 
 msgid "Empty Trash?"
 msgstr "Esvaziar Lixeira?"
@@ -95,16 +98,16 @@ msgid "Empty"
 msgstr "Vazia"
 
 msgid "Delete item permanently"
-msgstr ""
+msgstr "Excluir item permanentemente"
 
 msgid "Restore item?"
-msgstr ""
+msgstr "Restaurar item?"
 
 msgid "Operation failed"
-msgstr ""
+msgstr "Falha na operação"
 
 msgid "Refusing to overwrite existing file."
-msgstr ""
+msgstr "Recusando-se a sobrescrever o arquivo existente."
 
 #~ msgid "Trash"
 #~ msgstr "Abrir Lixeira"
