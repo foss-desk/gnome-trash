@@ -3,6 +3,7 @@ import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 
 import * as TrashPanel from './trashPanel.js';
 import * as TrashMenu from './trashMenu.js';
+import * as MenuItem from './menuItem.js';
 import * as ActionBar from './actionBar.js';
 import * as ConfirmDialog from './confirmDialog.js';
 import * as SearchBox from './searchBox.js';
@@ -22,7 +23,14 @@ export default class GnomeTrashExtension extends Extension {
             // Every module keeps its own `_`, so each one has to be handed the
             // extension's gettext or its strings stay in English.
             const gettext = this.gettext.bind(this);
-            for (const mod of [TrashPanel, TrashMenu, ActionBar, ConfirmDialog, SearchBox])
+            for (const mod of [
+                TrashPanel,
+                TrashMenu,
+                MenuItem,
+                ActionBar,
+                ConfirmDialog,
+                SearchBox,
+            ])
                 mod.init(gettext);
 
             this._panel = new TrashPanel.TrashPanel(this.getSettings(Settings.SCHEMA_ID), () =>
