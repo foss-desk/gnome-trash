@@ -7,6 +7,8 @@ A professional GNOME Shell extension to manage the trash items in [GNOME](https:
 
 > **Note:** This extension only shows items under the home trash folder (`~/.local/share/Trash`).
 
+![Gnome Trash panel menu](media/screenshot.png)
+
 ## 🌟 Features
 
 - **Panel Integration**: A trash icon in the top bar that reflects whether the trash is full or empty.
@@ -28,9 +30,9 @@ You can customize Gnome Trash using the extension's preferences window.
 | **Activation behavior** | What happens when an item is clicked: `Open`, `Restore`, or `Delete`. | `Restore`   |
 | **Hide button**         | Hide the panel button when the trash is empty.                        | `false`     |
 
-### Keyboard layout
+### Logging
 
-The preferences window also controls the sorting and activation behavior. The log level can be tuned with the `log-level` gsettings key (`0` off … `4` debug).
+The log level can be tuned with the `log-level` gsettings key (`0` off … `4` debug).
 
 ## Installation
 
@@ -42,7 +44,7 @@ Install **Gnome Trash** from the [Official GNOME Extensions](https://extensions.
 
 **Prerequisites:**
 
-- `git`, `make`, `nodejs` & `npm` (the tsconfig uses the TypeScript compiler; `npx` is used when `tsc` is not installed)
+- `git`, `make`, `nodejs` & `npm` (the build uses the TypeScript compiler; `npx` is used when `tsc` is not installed)
 
 **Build Commands:**
 
