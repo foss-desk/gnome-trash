@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-trash\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-05 21:59+0800\n"
+"POT-Creation-Date: 2026-11-06 12:00+0800\n"
 "PO-Revision-Date: 2020-04-20 11:37+0800\n"
 "Last-Translator:  <mostafa.sedaghat@gmail.com>\n"
 "Language-Team: Persian <translation-team-fa@lists.sourceforge.net>\n"
@@ -23,13 +23,13 @@ msgid "Empty Trash"
 msgstr "خالی کردن زباله‌دان "
 
 msgid "Settings"
-msgstr ""
+msgstr "تنظیمات"
 
 msgid "Cancel"
 msgstr "لغو"
 
 msgid "OK"
-msgstr ""
+msgstr "تأیید"
 
 msgid "Deleted"
 msgstr "حذف شده"
@@ -41,40 +41,40 @@ msgid "Delete"
 msgstr "حذف"
 
 msgid "Preferences"
-msgstr ""
+msgstr "ترجیحات"
 
 msgid "Sort trash by"
-msgstr ""
+msgstr "مرتب‌سازی زباله‌دان بر اساس"
 
 msgid "Delete time"
-msgstr ""
+msgstr "زمان حذف"
 
 msgid "File name"
-msgstr ""
+msgstr "نام فایل"
 
 msgid "Activation behavior"
-msgstr ""
+msgstr "رفتار فعال‌سازی"
 
 msgid "Open the file"
-msgstr ""
+msgstr "باز کردن فایل"
 
 msgid "Restore the file"
-msgstr ""
+msgstr "بازیابی فایل"
 
 msgid "Delete the file"
-msgstr ""
+msgstr "حذف فایل"
 
 msgid "Hide button when trash is empty"
-msgstr ""
+msgstr "پنهان کردن دکمه وقتی زباله‌دان خالی است"
 
 msgid "Search trash..."
-msgstr ""
+msgstr "جستجو در زباله‌دان..."
 
 msgid "Trash is empty"
-msgstr ""
+msgstr "زباله‌دان خالی است"
 
 msgid "Gnome Trash"
-msgstr ""
+msgstr "زباله‌دان گنوم"
 
 msgid "Gnome-trash failed to start"
 msgstr "زباله‌دان گنوم موفق به اجرا نشد"
@@ -86,7 +86,7 @@ msgid "Empty Trash?"
 msgstr "خالی کردن زباله‌دان؟"
 
 msgid "Are you sure you want to delete all items from the trash?"
-msgstr "مطمئنید می‌خواهید همه آیتمهای زباله‌دان را حذف کنید؟"
+msgstr "مطمئنید می‌خواهید همه آیتم‌های زباله‌دان را حذف کنید؟"
 
 msgid "This operation cannot be undone."
 msgstr "این عملیات برگشت پذیر نیست."

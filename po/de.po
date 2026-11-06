@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-trash\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-05 21:59+0800\n"
+"POT-Creation-Date: 2026-11-06 12:00+0800\n"
 "PO-Revision-Date: 2013-05-23 00:18+0100\n"
 "Last-Translator: Jonatan Zeidler <jonatan_zeidler@hotmail.de>\n"
 "Language-Team: German <jonatan_zeidler@gmx.de>\n"
@@ -26,64 +26,64 @@ msgid "Empty Trash"
 msgstr "Mülleimer leeren"
 
 msgid "Settings"
-msgstr ""
+msgstr "Einstellungen"
 
 msgid "Cancel"
 msgstr "Abbrechen"
 
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgid "Deleted"
-msgstr ""
+msgstr "Gelöscht"
 
 msgid "Restore"
-msgstr ""
+msgstr "Wiederherstellen"
 
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 msgid "Preferences"
-msgstr ""
+msgstr "Einstellungen"
 
 msgid "Sort trash by"
-msgstr ""
+msgstr "Mülleimer sortieren nach"
 
 msgid "Delete time"
-msgstr ""
+msgstr "Löschzeitpunkt"
 
 msgid "File name"
-msgstr ""
+msgstr "Dateiname"
 
 msgid "Activation behavior"
-msgstr ""
+msgstr "Verhalten beim Klicken"
 
 msgid "Open the file"
-msgstr ""
+msgstr "Datei öffnen"
 
 msgid "Restore the file"
-msgstr ""
+msgstr "Datei wiederherstellen"
 
 msgid "Delete the file"
-msgstr ""
+msgstr "Datei löschen"
 
 msgid "Hide button when trash is empty"
-msgstr ""
+msgstr "Schaltfläche ausblenden, wenn der Mülleimer leer ist"
 
 msgid "Search trash..."
-msgstr ""
+msgstr "Mülleimer durchsuchen…"
 
 msgid "Trash is empty"
-msgstr ""
+msgstr "Mülleimer ist leer"
 
 msgid "Gnome Trash"
-msgstr ""
+msgstr "Gnome Mülleimer"
 
 msgid "Gnome-trash failed to start"
-msgstr ""
+msgstr "Gnome-trash konnte nicht gestartet werden"
 
 msgid "No trash folder is detected."
-msgstr ""
+msgstr "Kein Mülleimerordner gefunden."
 
 msgid "Empty Trash?"
 msgstr "Mülleimer leeren?"
@@ -98,16 +98,16 @@ msgid "Empty"
 msgstr "Leeren"
 
 msgid "Delete item permanently"
-msgstr ""
+msgstr "Element endgültig löschen"
 
 msgid "Restore item?"
-msgstr ""
+msgstr "Element wiederherstellen?"
 
 msgid "Operation failed"
-msgstr ""
+msgstr "Vorgang fehlgeschlagen"
 
 msgid "Refusing to overwrite existing file."
-msgstr ""
+msgstr "Bestehende Datei wird nicht überschrieben."
 
 #~ msgid "Trash"
 #~ msgstr "Mülleimer öffnen"

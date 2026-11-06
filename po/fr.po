@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-trash-translations-fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-05 21:59+0800\n"
+"POT-Creation-Date: 2026-11-06 12:00+0800\n"
 "PO-Revision-Date: 2020-04-22 19:17+0200\n"
 "Last-Translator: galen1423 <>\n"
 "Language-Team: French\n"
@@ -21,16 +21,16 @@ msgid "Empty Trash"
 msgstr "Vider la corbeille"
 
 msgid "Settings"
-msgstr ""
+msgstr "Paramètres"
 
 msgid "Cancel"
 msgstr "Annuler"
 
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgid "Deleted"
-msgstr ""
+msgstr "Supprimé"
 
 msgid "Restore"
 msgstr "Restaurer"
@@ -39,40 +39,40 @@ msgid "Delete"
 msgstr "Supprimer"
 
 msgid "Preferences"
-msgstr ""
+msgstr "Préférences"
 
 msgid "Sort trash by"
-msgstr ""
+msgstr "Trier la corbeille par"
 
 msgid "Delete time"
-msgstr ""
+msgstr "Date de suppression"
 
 msgid "File name"
-msgstr ""
+msgstr "Nom du fichier"
 
 msgid "Activation behavior"
-msgstr ""
+msgstr "Comportement à l'activation"
 
 msgid "Open the file"
-msgstr ""
+msgstr "Ouvrir le fichier"
 
 msgid "Restore the file"
-msgstr ""
+msgstr "Restaurer le fichier"
 
 msgid "Delete the file"
-msgstr ""
+msgstr "Supprimer le fichier"
 
 msgid "Hide button when trash is empty"
-msgstr ""
+msgstr "Masquer le bouton lorsque la corbeille est vide"
 
 msgid "Search trash..."
-msgstr ""
+msgstr "Rechercher dans la corbeille…"
 
 msgid "Trash is empty"
-msgstr ""
+msgstr "La corbeille est vide"
 
 msgid "Gnome Trash"
-msgstr ""
+msgstr "Corbeille Gnome"
 
 msgid "Gnome-trash failed to start"
 msgstr "Gnome-trash a échoué à démarrer"
