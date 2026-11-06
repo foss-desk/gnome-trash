@@ -40,10 +40,6 @@ class TrashPanelInternal extends PanelMenu.Button {
     private _settingsChangedID: number = 0;
     private _focusTimerID: number = 0;
 
-    static {
-        GObject.registerClass(this);
-    }
-
     constructor(settings: any, openPrefs: () => void) {
         // super(menuAlignment, nameText, dontCreateMenu)
         super(0.0, _('Gnome Trash'), false);

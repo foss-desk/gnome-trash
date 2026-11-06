@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-trash\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-05 20:41+0800\n"
+"POT-Creation-Date: 2026-11-05 21:59+0800\n"
 "PO-Revision-Date: 2023-08-25 22:03+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch\n"
@@ -31,6 +31,9 @@ msgstr "Annuleren"
 
 msgid "OK"
 msgstr "Oké"
+
+msgid "Deleted"
+msgstr ""
 
 msgid "Restore"
 msgstr "Herstellen"

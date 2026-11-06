@@ -46,6 +46,18 @@ export function truncate(text: string, length: number): string {
     return text;
 }
 
+// Like truncate(), but keeps the end of the text, which is the meaningful part
+// for paths and similar values.
+export function truncateLeft(text: string, length: number): string {
+    text = text.trim();
+
+    if (text.length > length) {
+        text = '...' + text.substring(text.length - (length - 3));
+    }
+
+    return text;
+}
+
 export function spawnAsync(...args: string[]) {
     try {
         const flags = GLib.SpawnFlags.SEARCH_PATH;

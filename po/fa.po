@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-trash\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-05 20:41+0800\n"
+"POT-Creation-Date: 2026-11-05 21:59+0800\n"
 "PO-Revision-Date: 2020-04-20 11:37+0800\n"
 "Last-Translator:  <mostafa.sedaghat@gmail.com>\n"
 "Language-Team: Persian <translation-team-fa@lists.sourceforge.net>\n"
@@ -30,6 +30,9 @@ msgstr "لغو"
 
 msgid "OK"
 msgstr ""
+
+msgid "Deleted"
+msgstr "حذف شده"
 
 msgid "Restore"
 msgstr "بازیابی"

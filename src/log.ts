@@ -1,6 +1,3 @@
-// In GNOME 45+, the shell modules are ES modules and console logging is the
-// recommended way to report diagnostics (journalctl picks it up).
-
 export enum LOG_LEVELS {
     OFF,
     ERROR,
@@ -8,6 +5,8 @@ export enum LOG_LEVELS {
     INFO,
     DEBUG,
 }
+
+const PREFIX = 'Gnome Trash';
 
 let _settings: any = null;
 
@@ -20,22 +19,26 @@ export function log_level() {
     return _settings.get_uint('log-level');
 }
 
-export function log(text: string) {
-    console.log(`Gnome Trash: ${text}`);
-}
-
 export function error(text: string) {
-    if (log_level() >= LOG_LEVELS.ERROR) console.error(`Gnome Trash: [ERROR] ${text}`);
+    if (log_level() >= LOG_LEVELS.ERROR) {
+        console.error(`${PREFIX}: [ERROR] ${text}`);
+    }
 }
 
 export function warn(text: string) {
-    if (log_level() >= LOG_LEVELS.WARN) console.warn(`Gnome Trash: [WARN] ${text}`);
+    if (log_level() >= LOG_LEVELS.WARN) {
+        console.warn(`${PREFIX}: [WARN] ${text}`);
+    }
 }
 
 export function info(text: string) {
-    if (log_level() >= LOG_LEVELS.INFO) console.info(`Gnome Trash: [INFO] ${text}`);
+    if (log_level() >= LOG_LEVELS.INFO) {
+        console.log(`${PREFIX}: [INFO] ${text}`);
+    }
 }
 
 export function debug(text: string) {
-    if (log_level() >= LOG_LEVELS.DEBUG) console.debug(`Gnome Trash: [DEBUG] ${text}`);
+    if (log_level() >= LOG_LEVELS.DEBUG) {
+        console.log(`${PREFIX}: [DEBUG] ${text}`);
+    }
 }
