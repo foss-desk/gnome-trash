@@ -136,7 +136,7 @@ class TrashPanelInternal extends PanelMenu.Button {
         this._monitorChangeID = this._monitor.connect('changed', this._onTrashChange.bind(this));
     }
 
-    private _onTrashChange() {
+    private async _onTrashChange() {
         log.info('Trash has changed');
 
         this._trash.clear();
@@ -151,19 +151,21 @@ class TrashPanelInternal extends PanelMenu.Button {
 
             const children = dir.enumerate_children('*', Gio.FileQueryInfoFlags.NONE, null);
             let fileInfo = null;
-            const decoder = new TextDecoder();
 
             while ((fileInfo = children.next_file(null)) != null) {
                 const filename = fileInfo.get_name();
                 const trashPath = trashFilesPath + filename;
                 const infoPath = trashInfoPath + filename + '.trashinfo';
-                const [ok, info] = GLib.file_get_contents(infoPath);
-                if (!ok) {
-                    log.error(`unable to get contents of ${infoPath}`);
+
+                let contents: string;
+                try {
+                    contents = await utils.readFileText(Gio.File.new_for_path(infoPath));
+                } catch (err) {
+                    log.error(`unable to get contents of ${infoPath}: ${err}`);
                     continue;
                 }
 
-                const lines = decoder.decode(info).split('\n');
+                const lines = contents.split('\n');
                 if (lines[0] !== '[Trash Info]') {
                     log.error(`unable to get contents of ${infoPath}`);
                 }
@@ -299,8 +301,11 @@ class TrashPanelInternal extends PanelMenu.Button {
     private async _doDeleteItem(item: TrashItem.TrashItem) {
         log.info(`try to delete '${item.filename}'`);
 
-        if (await utils.spawnSync('rm', '-rf', item.trashPath)) {
-            await utils.spawnSync('rm', '-f', item.infoPath);
+        try {
+            await utils.deleteRecursively(Gio.File.new_for_path(item.trashPath));
+            await utils.deleteFile(Gio.File.new_for_path(item.infoPath));
+        } catch (err) {
+            log.error(`unable to delete '${item.filename}': ${err}`);
         }
     }
 
@@ -321,17 +326,26 @@ class TrashPanelInternal extends PanelMenu.Button {
     private async _doRestoreItem(item: TrashItem.TrashItem) {
         log.info(`try to restore '${item.filename}' to: '${item.restorePath}'`);
 
+        const src = Gio.File.new_for_path(item.trashPath);
         const dst = Gio.File.new_for_path(item.restorePath);
+
         if (dst.query_exists(null)) {
             Main.notifyError(_('Operation failed'), _('Refusing to overwrite existing file.'));
-        } else {
-            // Create parent directories if they do not exist
-            const parentDir = item.restorePath.substring(0, item.restorePath.lastIndexOf('/') + 1);
-            await utils.spawnSync('mkdir', '-p', parentDir);
+            return;
+        }
 
-            if (await utils.spawnSync('mv', item.trashPath, item.restorePath)) {
-                await utils.spawnSync('rm', item.infoPath);
+        try {
+            // Create parent directories if they do not exist
+            const parent = dst.get_parent();
+            if (parent !== null) {
+                await utils.makeDirectoryWithParents(parent);
             }
+
+            await utils.moveFile(src, dst);
+            await utils.deleteFile(Gio.File.new_for_path(item.infoPath));
+        } catch (err) {
+            log.error(`unable to restore '${item.filename}': ${err}`);
+            Main.notifyError(_('Operation failed'), _(`Unable to restore '${item.filename}'.`));
         }
     }
 
