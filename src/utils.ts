@@ -58,6 +58,155 @@ export function truncateLeft(text: string, length: number): string {
     return text;
 }
 
+// Shell code must not use synchronous file IO (e.g. GLib.file_get_contents):
+// it blocks the compositor. Use the async Gio API and await the result.
+export function readFileText(file: Gio.File): Promise<string> {
+    return new Promise((resolve, reject) => {
+        file.load_contents_async(null, (source: any, res: any) => {
+            try {
+                const [ok, contents] = source.load_contents_finish(res);
+                if (!ok) {
+                    reject(new Error(`unable to read ${file.get_path()}`));
+                    return;
+                }
+                resolve(new TextDecoder().decode(contents));
+            } catch (err) {
+                reject(err);
+            }
+        });
+    });
+}
+
+export function deleteFile(file: Gio.File): Promise<void> {
+    return new Promise((resolve, reject) => {
+        file.delete_async(GLib.PRIORITY_DEFAULT, null, (source: any, res: any) => {
+            try {
+                source.delete_finish(res);
+                resolve();
+            } catch (err) {
+                reject(err);
+            }
+        });
+    });
+}
+
+// Gio.File.delete() refuses to remove non-empty directories, so walk the tree
+// and remove children before the directory itself.
+export async function deleteRecursively(file: Gio.File): Promise<void> {
+    const info = await queryFileInfo(file);
+    if (info.get_file_type() === Gio.FileType.DIRECTORY) {
+        const enumerator = await enumerateChildren(file);
+        for (;;) {
+            const infos = await nextFiles(enumerator);
+            if (infos.length === 0) break;
+
+            for (const childInfo of infos) {
+                await deleteRecursively(enumerator.get_child(childInfo));
+            }
+        }
+    }
+
+    await deleteFile(file);
+}
+
+export function moveFile(source: Gio.File, destination: Gio.File): Promise<void> {
+    return new Promise((resolve, reject) => {
+        source.move_async(
+            destination,
+            Gio.FileCopyFlags.NONE,
+            GLib.PRIORITY_DEFAULT,
+            null,
+            null,
+            (src: any, res: any) => {
+                try {
+                    src.move_finish(res);
+                    resolve();
+                } catch (err) {
+                    reject(err);
+                }
+            },
+        );
+    });
+}
+
+// Gio has no asynchronous make_directory_with_parents(), so create each missing
+// ancestor individually and ignore the ones that already exist.
+export async function makeDirectoryWithParents(file: Gio.File): Promise<void> {
+    const parent = file.get_parent();
+    if (parent !== null) {
+        await makeDirectoryWithParents(parent);
+    }
+
+    try {
+        await makeDirectory(file);
+    } catch (err: any) {
+        if (!err.matches?.(Gio.IOErrorEnum, Gio.IOErrorEnum.EXISTS)) {
+            throw err;
+        }
+    }
+}
+
+function makeDirectory(file: Gio.File): Promise<void> {
+    return new Promise((resolve, reject) => {
+        file.make_directory_async(GLib.PRIORITY_DEFAULT, null, (source: any, res: any) => {
+            try {
+                source.make_directory_finish(res);
+                resolve();
+            } catch (err) {
+                reject(err);
+            }
+        });
+    });
+}
+
+function queryFileInfo(file: Gio.File): Promise<any> {
+    return new Promise((resolve, reject) => {
+        file.query_info_async(
+            'standard::type',
+            Gio.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+            GLib.PRIORITY_DEFAULT,
+            null,
+            (source: any, res: any) => {
+                try {
+                    resolve(source.query_info_finish(res));
+                } catch (err) {
+                    reject(err);
+                }
+            },
+        );
+    });
+}
+
+function enumerateChildren(file: Gio.File): Promise<any> {
+    return new Promise((resolve, reject) => {
+        file.enumerate_children_async(
+            'standard::name',
+            Gio.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+            GLib.PRIORITY_DEFAULT,
+            null,
+            (source: any, res: any) => {
+                try {
+                    resolve(source.enumerate_children_finish(res));
+                } catch (err) {
+                    reject(err);
+                }
+            },
+        );
+    });
+}
+
+function nextFiles(enumerator: any): Promise<any[]> {
+    return new Promise((resolve, reject) => {
+        enumerator.next_files_async(100, GLib.PRIORITY_DEFAULT, null, (source: any, res: any) => {
+            try {
+                resolve(source.next_files_finish(res));
+            } catch (err) {
+                reject(err);
+            }
+        });
+    });
+}
+
 export function spawnAsync(...args: string[]) {
     try {
         const flags = GLib.SpawnFlags.SEARCH_PATH;
